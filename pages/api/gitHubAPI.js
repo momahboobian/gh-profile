@@ -5,16 +5,11 @@ const octokit = new Octokit({
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function handler(req, res) {
-  //   const { owner, repository } = req.body;
-  const owner = "nataliiazab";
-  const repository = "good-pr";
-  //this is the user we check the data for
-  const user = "farnooshmo";
+  //   const { owner } = req.body;
+  const owner = "lorenacapraru";
   try {
-    const commits = await octokit.request(
-      `GET /repos/${owner}/${repository}/commits?author=${user}`
-    );
-    return res.status(200).json([commits.data]);
+    const commits = await octokit.request(`GET /users/${owner}/events`);
+    return res.json({ commits: commits });
   } catch (error) {
     console.error("Error fetching data:", error);
     return res
