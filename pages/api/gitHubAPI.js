@@ -9,7 +9,7 @@ export default async function handler(req, res) {
   const owner = "lorenacapraru";
   try {
     const commits = await octokit.request(`GET /users/${owner}/events`);
-    return res.json({ commits: commits });
+    return res.json({ commits: commits.data });
   } catch (error) {
     console.error("Error fetching data:", error);
     return res
