@@ -19,5 +19,9 @@ model Graduate {
   linkedin  String?
   role      String ? 
   cohort    String?
+  CV        String?
+  coverLetter String?
+  gitFP     String?
+  demoFP    String?
 }
 
