@@ -17,9 +17,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className={inter.className}>
-        <main className="bg-black">
-          <div className="flex border-gray-950">{children}</div>
-        </main>
+        <main className="bg-black">{children}</main>
       </body>
     </html>
   );
