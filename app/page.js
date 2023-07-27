@@ -9,12 +9,12 @@ export default function Home() {
 
   return (
     <main className="flex items-center justify-between min-h-screen p-10">
-      <div className="flex items-center">
+      <div className="flex flex-wrap items-center justify-between  ">
         {profiles.map((profile) => (
           <ProfileCard key={profile.id} profile={profile} />
         ))}
       </div>
-      <div className="flex w-full max-w-5xl items-center justify-between text-sm lg:flex"></div>
+      {/* <div className="flex w-full max-w-5xl items-center justify-between text-sm lg:flex"></div> */}
     </main>
   );
 }
