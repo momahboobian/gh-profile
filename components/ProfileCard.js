@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+
 export default function ProfileCard({ profile }) {
   return (
     <div className="profile-card bg-neutral-800	rounded-lg shadow-md p-1 w-80">
@@ -25,6 +28,7 @@ export default function ProfileCard({ profile }) {
             rel="noopener noreferrer"
             className="mr-2 inline-block bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"
           >
+            <FontAwesomeIcon icon={faGithub} className="mr-1" />
             GitHub
           </a>
           <a
@@ -33,6 +37,7 @@ export default function ProfileCard({ profile }) {
             rel="noopener noreferrer"
             className="inline-block bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded-lg"
           >
+            <FontAwesomeIcon icon={faLinkedin} className="mr-1" />
             LinkedIn
           </a>
         </div>
