@@ -1,0 +1,121 @@
+{
+  "graduate": [
+    {
+      "id": 1,
+      "fullName": "Lorena Capraru",
+      "github": "lorenacapraru",
+      "avatar": "https://avatars.githubusercontent.com/u/108892538?https://avatars.githubusercontent.com/u/17272675?v=4",
+      "linkedin": "https://www.linkedin.com/in/lorena-capraru-070723244/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "https://drive.google.com/file/d/1lWzi7TOq7fWOSzivVQGnndYQ43nmD20V/view?usp=sharing",
+      "coverLetter": "https://docs.google.com/document/d/1zz3q3-eoGAkQYPyo_n63w72vJKbuJbuFf0upMnUd7xQ/edit?usp=sharing",
+      "gitFP": "https://github.com/nataliiazab/good-pr",
+      "demoFP": "https://good-pr.vercel.app/"
+    },
+    {
+      "id": 2,
+      "fullName": "Mo Mahboobian",
+      "github": "momahboobian",
+      "avatar": "https://avatars.githubusercontent.com/u/17272675?v=4",
+      "linkedin": "https://www.linkedin.com/in/mo-mahboobian-08188271/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 3,
+      "fullName": "Natalie Zablotska",
+      "github": "nataliiazab",
+      "avatar": "https://avatars.githubusercontent.com/u/113237479?v=4",
+      "linkedin": "https://www.linkedin.com/in/nataliia-zablotska/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 4,
+      "fullName": "Farnoosh Moayeri",
+      "github": "Farnooshmo",
+      "avatar": "https://avatars.githubusercontent.com/u/91014204?v=4",
+      "linkedin": "https://www.linkedin.com/in/farnooshmoayeri/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 5,
+      "fullName": "Olena Reukova",
+      "github": "OlenaReukova",
+      "avatar": "https://avatars.githubusercontent.com/u/34659641?s=48&v=4",
+      "linkedin": "https://www.linkedin.com/in/olenareukova/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 6,
+      "fullName": "Meysam Arshadi",
+      "github": "Meysam-Arshadi",
+      "avatar": "https://avatars.githubusercontent.com/u/108950433?v=4",
+      "linkedin": "https://www.linkedin.com/in/meysamarshadi/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 7,
+      "fullName": "Hadi Allahverdi",
+      "github": "hadipournigjeh",
+      "avatar": "https://avatars.githubusercontent.com/u/108987953?v=4",
+      "linkedin": "https://www.linkedin.com/in/hadi-allahverdi-pournigjeh-a86913224/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 8,
+      "fullName": "Saghar Hosseinmardi",
+      "github": "SagharHosseinmardi",
+      "avatar": "https://avatars.githubusercontent.com/u/108956395?v=4",
+      "linkedin": "https://www.linkedin.com/in/saghar-hosseinmardi-5b0919244/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    },
+    {
+      "id": 9,
+      "fullName": "Karleen Richards",
+      "github": "karleenmsrichards",
+      "avatar": "https://avatars.githubusercontent.com/u/108957290?v=4",
+      "linkedin": "https://www.linkedin.com/in/karleen-ms-richards/",
+      "role": "Full-Stack",
+      "cohort": "LDN-9",
+      "cv": "",
+      "coverLetter": "",
+      "gitFP": "",
+      "demoFP": ""
+    }
+  ]
+}
