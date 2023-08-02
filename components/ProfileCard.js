@@ -10,8 +10,8 @@ export default function ProfileCard({ profile }) {
   };
 
   return (
-    <div className="flex flex-col justify-around text-white bg-transparent p-2 rounded-2xl  transition-all duration-300 hover:transform hover:scale-105 ">
-      <div className="w-[300px] md:w-[360px] h-[360px] bg-transparent group perspective">
+    <div className="flex flex-col justify-around text-white bg-transparent p-4 rounded-2xl  transition-all duration-300 hover:transform hover:scale-105 ">
+      <div className="w-[300px] md:w-[340px] h-[360px] bg-transparent group perspective">
         <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
           <div className="absolute w-full h-full bg-neutral-800 rounded-lg shadow-md p-1">
             <div className="flex flex-col justify-between items-center whitespace-nowrap bg-black rounded-t-lg p-4 cursor-pointer">
@@ -43,18 +43,18 @@ export default function ProfileCard({ profile }) {
 
               <div className="flex items-center">
                 <ul className="flex items-center justify-between gap-14 p-4">
-                  <li className="group">
+                  <li className="group/tooltip">
                     <a href={profile.linkedin} target="_blank">
                       <FontAwesomeIcon
                         icon={faLinkedin}
                         className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA]"
                       />
                     </a>
-                    <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F]">
+                    <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover/tooltip:visible tooltip border border-slate-100 dark:bg-[#1A1E1F]">
                       LinkedIn
                     </div>
                   </li>
-                  <li className="group">
+                  <li className="group/tooltip">
                     <a
                       href={`https://github.com/${profile.github}`}
                       target="_blank"
@@ -64,7 +64,7 @@ export default function ProfileCard({ profile }) {
                         className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA]"
                       />
                     </a>
-                    <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F]">
+                    <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover/tooltip:visible tooltip border border-slate-100 dark:bg-[#1A1E1F]">
                       GitHub
                     </div>
                   </li>
@@ -72,11 +72,15 @@ export default function ProfileCard({ profile }) {
               </div>
             </div>
           </div>
-          <div className="absolute my-rotate-y-180 backface-hidden w-full h-full bg-gray-100 rounded-lg shadow-md p-1">
-            <div className="flex flex-col text-center text-black">
+
+          <div className="absolute my-rotate-y-180 backface-hidden w-full h-full bg-neutral-800 rounded-lg shadow-md p-1">
+            <div className="flex flex-col text-center text-lg">
               This is back
             </div>
-          </div>{" "}
+            <div className="flex flex-col justify-between items-center whitespace-nowrap w-full  bg-black rounded-b-lg">
+              Commits
+            </div>
+          </div>
         </div>{" "}
       </div>
     </div>
