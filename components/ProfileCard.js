@@ -40,8 +40,8 @@ export default function ProfileCard({ profile }) {
             </div>
           </div>
 
-          <div className="">
-            <ul className="flex items-center justify-between gap-4 p-4 ">
+          <div className="flex items-center">
+            <ul className="flex items-center justify-between gap-14 p-4 ">
               <li className="group">
                 <a href={profile.linkedin} target="_blank">
                   <FontAwesomeIcon
@@ -49,7 +49,7 @@ export default function ProfileCard({ profile }) {
                     className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA] "
                   />
                 </a>
-                <div className="invisible absolute left-24 bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
+                <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
                   LinkedIn
                 </div>
               </li>
@@ -63,7 +63,7 @@ export default function ProfileCard({ profile }) {
                     className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA]"
                   />
                 </a>
-                <div className="invisible absolute left-40 bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
+                <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
                   GitHub
                 </div>
               </li>
@@ -73,4 +73,12 @@ export default function ProfileCard({ profile }) {
       </div>
     </div>
   );
+}
+
+{
+  /* <div className="card transform perspective origin-center transition-all duration-300">
+  <div className="absolute top-0 left-0 right-0 bottom-0 text-white bg-neutral-800 rounded-lg shadow-md p-1 transform perspective origin-center rotate-y-180 hidden group-hover:block">
+    <p className="flex justify-center text-center text-2xl mt-8">BACK</p>
+  </div>
+</div>; */
 }
