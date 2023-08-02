@@ -20,7 +20,6 @@ export default async function handler(req, res) {
     );
 
     const avatar_url = commits.data.items[0].author.avatar_url;
-    console.log(oneWeekAgo);
 
     await prisma.graduate.updateMany({
       where: { github: owner },
