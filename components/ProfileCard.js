@@ -1,7 +1,10 @@
+"use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function ProfileCard({ profile }) {
+
+  
   return (
     <div className="flex flex-col justify-around text-white p-2 rounded-2xl sm:w-[320px] md:w-[360px] transition-all duration-300 hover:transform hover:scale-105">
       <div className="flex-1 bg-neutral-800 rounded-lg shadow-md p-1">
