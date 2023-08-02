@@ -1,33 +1,36 @@
 "use client";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ProfileCard from "@components/ProfileCard";
+import Loading from "@components/Loading";
 
 export default function Home() {
-  const [profiles, setProfiles] = useState([]);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProfiles = async () => {
+    setLoading(true);
+    const fetchGraduates = async () => {
       try {
-        const response = await fetch("api/graduate");
-        if (!response.ok) {
-          throw new Error("Failed to fetch profiles");
-        }
+        const response = await fetch("/api/graduate");
         const data = await response.json();
-        setProfiles(data);
+        setData(data);
+        console.log(data);
+        setLoading(false);
       } catch (error) {
-        console.error(error);
-        // Handle error here, e.g., show an error message to the user
+        console.error("Error fetching data: ", error);
+      } finally {
+        setLoading(false);
       }
     };
-
-    fetchProfiles();
+    fetchGraduates();
   }, []);
 
-  return (
+  return loading ? (
+    <Loading />
+  ) : (
     <main className="flex items-center justify-between min-h-screen p-10">
       <div className="flex flex-wrap items-center justify-between  ">
-        {profiles.map((profile) => (
+        {data.map((profile) => (
           <ProfileCard key={profile.id} profile={profile} />
         ))}
       </div>
