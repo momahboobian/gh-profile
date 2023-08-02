@@ -1,3 +1,4 @@
+const dayjs = require("dayjs");
 const { Octokit } = require("@octokit/rest");
 const octokit = new Octokit({
   auth: process.env.GITHUB_AUTH_TOKEN,
@@ -9,13 +10,16 @@ const prisma = new PrismaClient();
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function handler(req, res) {
   //   const { owner } = req.body;
-  const owner = "lorenacapraru";
+  const owner = "LorenaCapraru";
   try {
-    const commits = await octokit.request(`GET /users/${owner}/events`);
+    const today = dayjs().format("YYYY-MM-DD");
+    const oneWeekAgo = dayjs().subtract(7, "days").format("YYYY-MM-DD");
 
-    const avatar_url = commits.data[0].actor.avatar_url;
-    const user = commits.data[0].actor.login;
-    console.log(user);
+    const commits = await octokit.request(
+      `GET /search/commits?q=author:${owner}+committer-date:${oneWeekAgo}..${today}`
+    );
+
+    const avatar_url = commits.data.items[0].author.avatar_url;
 
     await prisma.graduate.updateMany({
       where: { github: owner },
@@ -24,7 +28,7 @@ export default async function handler(req, res) {
       },
     });
 
-    return res.json(commits.data);
+    return res.json([commits.data]);
   } catch (error) {
     console.error("Error fetching data:", error);
     return res
