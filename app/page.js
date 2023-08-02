@@ -1,11 +1,28 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import ProfileCard from "@components/ProfileCard";
-import data from "profile-db.json";
 
 export default function Home() {
-  const [profiles] = useState(data.graduate);
+  const [profiles, setProfiles] = useState([]);
+
+  useEffect(() => {
+    const fetchProfiles = async () => {
+      try {
+        const response = await fetch("api/graduate");
+        if (!response.ok) {
+          throw new Error("Failed to fetch profiles");
+        }
+        const data = await response.json();
+        setProfiles(data);
+      } catch (error) {
+        console.error(error);
+        // Handle error here, e.g., show an error message to the user
+      }
+    };
+
+    fetchProfiles();
+  }, []);
 
   return (
     <main className="flex items-center justify-between min-h-screen p-10">
@@ -14,7 +31,6 @@ export default function Home() {
           <ProfileCard key={profile.id} profile={profile} />
         ))}
       </div>
-      {/* <div className="flex w-full max-w-5xl items-center justify-between text-sm lg:flex"></div> */}
     </main>
   );
 }
