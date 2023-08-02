@@ -10,11 +10,20 @@ export default function ProfileCard({ profile }) {
   };
 
   return (
-    <div className="flex flex-col justify-around text-white bg-transparent p-4 rounded-2xl  transition-all duration-300 hover:transform hover:scale-105 ">
-      <div className="w-[300px] md:w-[340px] h-[360px] bg-transparent group perspective">
-        <div className="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+    <div className="flex flex-col justify-around text-white bg-transparent p-4 rounded-2xl transition-all duration-300 hover:transform hover:scale-105 ">
+      <div className="w-[300px] md:w-[340px] h-[360px] bg-transparent  perspective">
+        <div
+          className={`relative preserve-3d w-full h-full duration-1000 ${
+            isFlipped ? "my-rotate-y-180" : ""
+          }`}
+          onClick={isFlipped ? handleFlip : undefined}
+        >
           <div className="absolute w-full h-full bg-neutral-800 rounded-lg shadow-md p-1">
-            <div className="flex flex-col justify-between items-center whitespace-nowrap bg-black rounded-t-lg p-4 cursor-pointer">
+            {/* Front side content */}
+            <div
+              className="flex flex-col justify-between items-center whitespace-nowrap bg-black rounded-t-lg p-4 cursor-pointer"
+              onClick={handleFlip}
+            >
               <img
                 src={profile.avatar}
                 alt={`Avatar of ${profile.fullName}`}
@@ -74,6 +83,7 @@ export default function ProfileCard({ profile }) {
           </div>
 
           <div className="absolute my-rotate-y-180 backface-hidden w-full h-full bg-neutral-800 rounded-lg shadow-md p-1">
+            {/* Back side content */}
             <div className="flex flex-col text-center text-lg">
               This is back
             </div>
@@ -81,7 +91,7 @@ export default function ProfileCard({ profile }) {
               Commits
             </div>
           </div>
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
