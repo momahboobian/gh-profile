@@ -1,10 +1,19 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export default function ProfileCard({ profile }) {
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const handleCardClick = () => {
+    setIsFlipped((prevState) => !prevState);
+  };
+
   return (
-    <div className="flex flex-col justify-around text-white p-2 rounded-2xl sm:w-[320px] md:w-[360px] transition-all duration-300 hover:transform hover:scale-105">
-      <div className="flex-1 bg-neutral-800 rounded-lg shadow-md p-1">
+    <div
+      className={`flex flex-col justify-around text-white p-2 rounded-2xl sm:w-[320px] md:w-[360px] transition-all duration-300 hover:transform hover:scale-105`}
+    >
+      <div className="flex-1 bg-neutral-800 rounded-lg shadow-md p-1 relative">
         <div className="flex flex-col justify-between items-center whitespace-nowrap bg-black rounded-t-lg p-4">
           <img
             src={profile.avatar}
@@ -32,19 +41,19 @@ export default function ProfileCard({ profile }) {
           </div>
 
           <div className="">
-            <ul className="flex items-center justify-between gap-4 p-4">
-              <li className="">
+            <ul className="flex items-center justify-between gap-4 p-4 ">
+              <li className="group">
                 <a href={profile.linkedin} target="_blank">
                   <FontAwesomeIcon
                     icon={faLinkedin}
-                    className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA]"
+                    className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA] "
                   />
                 </a>
-                <div className="invisible absolute bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
-                  something
+                <div className="invisible absolute left-24 bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
+                  LinkedIn
                 </div>
               </li>
-              <li className="">
+              <li className="group">
                 <a
                   href={`https://github.com/${profile.github}`}
                   target="_blank"
@@ -54,6 +63,9 @@ export default function ProfileCard({ profile }) {
                     className="text-white h-[35px] transition duration-300 hover:scale-110 hover:text-[#37BCBA]"
                   />
                 </a>
+                <div className="invisible absolute left-40 bg-gray-900 text-gray-200 p-2 rounded-md shadow group-hover:visible tooltip border border-slate-100 dark:bg-[#1A1E1F] ">
+                  GitHub
+                </div>
               </li>
             </ul>
           </div>
