@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import ProfileCard from "@components/ProfileCard";
 import Loading from "@components/Loading";
+import Search from "@components/Search";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -28,7 +29,8 @@ export default function Home() {
   return loading ? (
     <Loading />
   ) : (
-    <main className="flex items-center justify-between min-h-screen p-10">
+    <main className="flex flex-col items-center justify-between min-h-screen p-10">
+      <Search />
       <div className="flex flex-wrap items-center justify-between  ">
         {data.map((profile) => (
           <ProfileCard key={profile.id} profile={profile} />
