@@ -7,6 +7,7 @@ import Search from "@components/Search";
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("Search a graduate");
 
   useEffect(() => {
     setLoading(true);
@@ -26,15 +27,24 @@ export default function Home() {
     fetchGraduates();
   }, []);
 
+  //filters graduates from db which contains the search input(case insensitive)
+  const searchResults = data.filter((el) =>
+    el.fullName.toLowerCase().includes(search.toLowerCase())
+  );
+
   return loading ? (
     <Loading />
   ) : (
     <main className="flex flex-col items-center justify-between min-h-screen p-10">
-      <Search />
+      <Search search={search} setSearch={setSearch} />
       <div className="flex flex-wrap items-center justify-between  ">
-        {data.map((profile) => (
-          <ProfileCard key={profile.id} profile={profile} />
-        ))}
+        {searchResults.length > 0
+          ? searchResults.map((profile) => (
+              <ProfileCard key={profile.id} profile={profile} />
+            ))
+          : data.map((profile) => (
+              <ProfileCard key={profile.id} profile={profile} />
+            ))}
       </div>
     </main>
   );

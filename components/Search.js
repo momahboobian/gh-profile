@@ -1,8 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function Search() {
-  const [search, setSearch] = useState("Search a graduate");
+export default function Search({ search, setSearch }) {
   const handleSearchClick = () => {
     setSearch("");
   };
@@ -11,7 +10,6 @@ export default function Search() {
     e.preventDefault();
     setSearch(e.target.value);
   };
-  console.log(search);
   return (
     <label for="search">
       <input
