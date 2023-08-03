@@ -1,6 +1,3 @@
-"use client";
-import { useState } from "react";
-
 export default function Search({ search, setSearch }) {
   const handleSearchClick = () => {
     setSearch("");
