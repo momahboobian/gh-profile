@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from "react";
 import ProfileCard from "@components/ProfileCard";
 import Loading from "@components/Loading";
+import Search from "@components/Search";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("search");
 
   useEffect(() => {
     setLoading(true);
@@ -25,14 +27,24 @@ export default function Home() {
     fetchGraduates();
   }, []);
 
+  //filters graduates from db which contains the search input(case insensitive)
+  const searchResults = data.filter((el) =>
+    el.fullName.toLowerCase().includes(search.toLowerCase())
+  );
+
   return loading ? (
     <Loading />
   ) : (
-    <main className="flex items-center justify-between min-h-screen p-10">
+    <main className="flex flex-col items-start  min-h-screen p-10">
+      <Search search={search} setSearch={setSearch} />
       <div className="flex flex-wrap items-center justify-between  ">
-        {data.map((profile) => (
-          <ProfileCard key={profile.id} profile={profile} />
-        ))}
+        {searchResults.length > 0
+          ? searchResults.map((profile) => (
+              <ProfileCard key={profile.id} profile={profile} />
+            ))
+          : data.map((profile) => (
+              <ProfileCard key={profile.id} profile={profile} />
+            ))}
       </div>
     </main>
   );
