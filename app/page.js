@@ -7,7 +7,7 @@ import Search from "@components/Search";
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState("Search a graduate");
+  const [search, setSearch] = useState("search");
 
   useEffect(() => {
     setLoading(true);

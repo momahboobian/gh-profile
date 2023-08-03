@@ -11,15 +11,43 @@ export default function Search({ search, setSearch }) {
     setSearch(e.target.value);
   };
   return (
-    <label for="search" class="flex flex-start p-4  ">
+    // <label for="search" class="flex flex-start p-4  ">
+    //   <input
+    //     id="search"
+    //     type="search"
+    //     value={search}
+    //     onClick={handleSearchClick}
+    //     onChange={handleSearchOnChange}
+    //     class=" p-5 bg-[#edeaea] font-medium rounded-md w-[300px] md:w-[340px] my-[10%] text-left  text-md text-[#929597] "
+    //   />
+    // </label>
+    <div class=" p-4 relative text-[#929597] focus-within:text-gray-400">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-8">
+        <button
+          type="submit"
+          class="p-1 focus:outline-none focus:shadow-outline"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            class="w-6 h-6"
+          >
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+      </span>
       <input
         id="search"
         type="search"
         value={search}
         onClick={handleSearchClick}
         onChange={handleSearchOnChange}
-        class=" p-3 text-black rounded-md w-[300px] md:w-[340px] my-[10%]"
-      />
-    </label>
+        class=" p-5 pl-12  bg-[#edeaea] font-medium rounded-md w-[300px] md:w-[340px] my-[10%] text-left  text-md text-[#929597] "
+      />{" "}
+    </div>
   );
 }
