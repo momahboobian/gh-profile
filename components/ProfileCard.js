@@ -10,7 +10,7 @@ export default function ProfileCard({ profile }) {
   };
 
   return (
-    <div className="flex flex-col justify-around text-white bg-transparent p-4 rounded-2xl transition-all duration-300 hover:transform hover:scale-105 ">
+    <div className="flex flex-col items-center justify-around text-white bg-transparent p-4 rounded-2xl transition-all duration-300 hover:transform hover:scale-105 ">
       <div className="w-[300px] md:w-[340px] h-[360px] bg-transparent  perspective">
         <div
           className={`relative preserve-3d w-full h-full duration-1000 ${

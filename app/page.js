@@ -35,7 +35,7 @@ export default function Home() {
   return loading ? (
     <Loading />
   ) : (
-    <main className="flex flex-col items-center justify-between min-h-screen p-10">
+    <main className="flex flex-col items-start  justify-between min-h-screen p-10">
       <Search search={search} setSearch={setSearch} />
       <div className="flex flex-wrap items-center justify-between  ">
         {searchResults.length > 0
