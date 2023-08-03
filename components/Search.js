@@ -11,16 +11,6 @@ export default function Search({ search, setSearch }) {
     setSearch(e.target.value);
   };
   return (
-    // <label for="search" class="flex flex-start p-4  ">
-    //   <input
-    //     id="search"
-    //     type="search"
-    //     value={search}
-    //     onClick={handleSearchClick}
-    //     onChange={handleSearchOnChange}
-    //     class=" p-5 bg-[#edeaea] font-medium rounded-md w-[300px] md:w-[340px] my-[10%] text-left  text-md text-[#929597] "
-    //   />
-    // </label>
     <div class=" p-4 relative text-[#929597] focus-within:text-gray-400">
       <span class="absolute inset-y-0 left-0 flex items-center pl-8">
         <svg
