@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+
 import AddGraduateForm from "./AddGraduateForm";
 
 export default function AddGraduate() {
