@@ -9,8 +9,8 @@ const prisma = new PrismaClient();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function handler(req, res) {
-  //   const { owner } = req.body;
-  const owner = "MoMahboobian";
+  const { owner } = req.body;
+  // const owner = "MoMahboobian";
   try {
     const today = dayjs().format("YYYY-MM-DD");
     const oneWeekAgo = dayjs().subtract(7, "days").format("YYYY-MM-DD");
