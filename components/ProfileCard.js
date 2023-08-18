@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import ProfileCardBackSide from "@components/ProfileCard-BackSide";
 
 export default function ProfileCard({ profile }) {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -82,14 +83,9 @@ export default function ProfileCard({ profile }) {
             </div>
           </div>
 
-          <div className="absolute my-rotate-y-180 backface-hidden w-full h-full bg-neutral-800 rounded-lg shadow-md p-1">
-            {/* Back side content */}
-            <div className="flex flex-col text-center text-lg">
-              This is back
-            </div>
-            <div className="flex flex-col justify-between items-center whitespace-nowrap w-full  bg-black rounded-b-lg">
-              Commits
-            </div>
+          {/* Back side content */}
+          <div className="absolute my-rotate-y-180 backface-hidden w-full h-full p-4 bg-neutral-800 rounded-lg shadow-md">
+            <ProfileCardBackSide {...profile} />
           </div>
         </div>
       </div>
