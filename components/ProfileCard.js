@@ -84,9 +84,8 @@ export default function ProfileCard({ profile }) {
           </div>
 
           {/* Back side content */}
-          <div className="absolute my-rotate-y-180w-full h-full p-4 bg-neutral-800 rounded-lg shadow-md">
-            {/* backface-hidden */}
-            <ProfileCardBackSide profile={profile} />
+          <div className="absolute my-rotate-y-180 backface-hidden w-full h-full p-4 bg-neutral-800 rounded-lg shadow-md">
+            <ProfileCardBackSide profile={profile} isFlipped={isFlipped} />
           </div>
         </div>
       </div>

@@ -9,17 +9,21 @@ const prisma = new PrismaClient();
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default async function handler(req, res) {
-  const { owner } = req.body;
+  // const { owner } = req.query;
   // const owner = "MoMahboobian";
+  const owner = "NataliIazab";
   try {
     const today = dayjs().format("YYYY-MM-DD");
     const oneWeekAgo = dayjs().subtract(7, "days").format("YYYY-MM-DD");
+    const oneMonthAgo = dayjs().subtract(1, "month").format("YYYY-MM-DD");
 
     const commits = await octokit.request(
       `GET /search/commits?q=author:${owner}+committer-date:${oneWeekAgo}..${today}`
+      // `GET /search/commits?q=author:${owner}`
     );
 
     const avatar_url = commits.data.items[0].author.avatar_url;
+    console.log(avatar_url);
 
     await prisma.graduate.updateMany({
       where: { github: owner },
