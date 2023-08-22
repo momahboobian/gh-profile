@@ -7,6 +7,7 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
 
   const fetchCommits = async () => {
     setIsLoading(true);
+
     try {
       const response = await fetch(`/api/gitHubAPI?owner=${profile.github}`);
       console.log(profile.github + " " + response.data);
