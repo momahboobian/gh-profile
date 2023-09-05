@@ -12,22 +12,10 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
     try {
       const response = await fetch(`/api/gitHubAPI?owner=${profile.github}`);
       const commitsData = await response.json();
-      const totalCommits = commitsData.totalCommitsLastWeek;
+      const totalCommitsLastWeek = commitsData.totalCommitsLastWeek;
+      setCommitsLastWeek(totalCommitsLastWeek);
 
-      setCommitsLastWeek(totalCommits);
-
-      // Fetch commits for last month
-      const oneMonthAgo = new Date();
-      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
-      const formattedDate = oneMonthAgo.toISOString().split("T")[0];
-
-      const responseLastMonth = await fetch(
-        `/api/gitHubAPI?owner=${profile.github}&since=${formattedDate}`
-      );
-
-      const commitsDataLastMonth = await responseLastMonth.json();
-      const totalCommitsLastMonth = commitsDataLastMonth.totalCommitsLastMonth;
-
+      const totalCommitsLastMonth = commitsData.totalCommitsLastMonth;
       setCommitsLastMonth(totalCommitsLastMonth);
     } catch (error) {
       setError("Error fetching commits");
