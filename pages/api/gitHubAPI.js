@@ -15,15 +15,42 @@ export default async function handler(req, res) {
     const oneWeekAgo = dayjs().subtract(7, "days").format("YYYY-MM-DD");
     const oneMonthAgo = dayjs().subtract(1, "month").format("YYYY-MM-DD");
 
-    // Fetch commits for the last week
-    const commitsResponseLastWeek = await octokit.search.commits({
-      q: `author:${owner} committer-date:${oneWeekAgo}..${today}`,
-    });
+    let totalCommitsLastWeek = 0;
+    let totalCommitsLastMonth = 0;
 
-    // Fetch commits for the last month
-    const commitsResponseLastMonth = await octokit.search.commits({
-      q: `author:${owner} committer-date:${oneMonthAgo}..${today}`,
-    });
+    // // Check rate limit before making the API requests
+    // const rateLimit = await octokit.rateLimit.get();
+    // const rateLimitRemaining = rateLimit.data.resources.core.remaining;
+
+    // if (rateLimitRemaining <= 0) {
+    //   // Handle rate limiting gracefully, you can choose to wait or return an error
+    //   return res.status(429).json({ error: "Rate limit exceeded" });
+    // }
+    // console.log("rateLimitRemaining", rateLimitRemaining);
+
+    // Function to fetch commits for the last week
+    const fetchCommitsLastWeek = async () => {
+      const commitsResponseLastWeek = await octokit.search.commits({
+        q: `author:${owner} committer-date:${oneWeekAgo}..${today}`,
+      });
+
+      const commitsLastWeek = commitsResponseLastWeek.data.items;
+      totalCommitsLastWeek = commitsResponseLastWeek.data.total_count;
+
+      return commitsLastWeek;
+    };
+
+    // Function to fetch commits for the last month
+    const fetchCommitsLastMonth = async () => {
+      const commitsResponseLastMonth = await octokit.search.commits({
+        q: `author:${owner} committer-date:${oneMonthAgo}..${today}`,
+      });
+
+      const commitsLastMonth = commitsResponseLastMonth.data.items;
+      totalCommitsLastMonth = commitsResponseLastMonth.data.total_count;
+
+      return commitsLastMonth;
+    };
 
     // const apiUrl = `/search/commits?q=author:${owner}+committer-date:${oneWeekAgo}..${today}`;
     // const commits = await octokit.request(apiUrl);
@@ -34,15 +61,24 @@ export default async function handler(req, res) {
 
     // Use octokit.search.commits to search for commits within a date range
     // Fetch commits for the last week
+    // Check rate limit before making the API requests
+    const rateLimit = await octokit.rateLimit.get();
+    const rateLimitRemaining = rateLimit.data.resources.core.remaining;
 
-    const commitsLastWeek = commitsResponseLastWeek.data.items;
-    const commitsLastMonth = commitsResponseLastMonth.data.items;
-    const totalCommitsLastWeek = commitsResponseLastWeek.data.total_count;
-    const totalCommitsLastMonth =
-      commitsResponseLastMonth.data.total_count || 0;
+    if (rateLimitRemaining <= 0) {
+      // Handle rate limiting gracefully, you can choose to wait or return an error
+      return res.status(429).json({ error: "Rate limit exceeded" });
+    }
+    console.log("rateLimitRemaining", rateLimitRemaining);
 
-    // Check if there are commits for the last week
-    if (commitsLastWeek && commitsLastWeek.length > 0) {
+    // Fetch commits for the last week
+    const commitsLastWeek = await fetchCommitsLastWeek();
+
+    // Fetch commits for the last month
+    const commitsLastMonth = await fetchCommitsLastMonth();
+
+    // Update the avatar URL if commits exist for the last week
+    if (commitsLastWeek.length > 0) {
       const ownerLogin = commitsLastWeek[0].author.login;
       console.log("Owner:", ownerLogin);
 
@@ -69,6 +105,21 @@ export default async function handler(req, res) {
       totalCommitsLastMonth,
     });
   } catch (error) {
+    if (error.status === 403 && error.headers) {
+      // Handle rate limit exceeded by retrying the request after a delay
+      const resetTime = new Date(error.headers["x-ratelimit-reset"] * 1000);
+      const currentTime = new Date();
+      const timeUntilReset = resetTime - currentTime;
+
+      if (timeUntilReset > 0) {
+        // Wait for the rate limit to reset before retrying
+        await new Promise((resolve) => setTimeout(resolve, timeUntilReset));
+
+        // Retry the request after waiting
+        return handler(req, res);
+      }
+    }
+
     console.error("Error fetching data:", error.message);
     return res
       .status(500)
