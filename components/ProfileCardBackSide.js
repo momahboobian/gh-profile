@@ -101,15 +101,15 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
         <div>Today</div>
       </div>
 
-      <div className="text-center text-lg">
-        {isLoading ? (
-          <div>Loading commits...</div>
-        ) : error ? (
-          <div>{error}</div>
-        ) : (
-          <>
-            <h3 className="text-center text-lg mb-2">Commits</h3>
-            <div className="text-base p-4 bg-black rounded-lg shadow-md ">
+      <h3 className="text-center text-lg mb-2">Commits</h3>
+      <div className="text-base p-4 bg-black rounded-lg shadow-md ">
+        <div className="text-center text-base">
+          {isLoading ? (
+            <div>Loading commits...</div>
+          ) : error ? (
+            <div>{error}</div>
+          ) : (
+            <>
               <div className="flex justify-between mx-2">
                 <div>Last Week:</div>
                 <div className="text-2xl mx-2">{commitsLastWeek}</div>
@@ -118,9 +118,9 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
                 <div>Last Month:</div>
                 <div className="text-2xl mx-2">{commitsLastMonth}</div>
               </div>
-            </div>
-          </>
-        )}
+            </>
+          )}
+        </div>
       </div>
     </div>
   );
