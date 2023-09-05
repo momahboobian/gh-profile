@@ -114,7 +114,11 @@ export default function AddGraduateForm({ data }) {
 
       <p className="font-thin text-sm italic ">*All fields are required</p>
 
-      <input type="submit" value="Submit" />
+      <input
+        type="submit"
+        value="Submit"
+        className=" p-4  bg-[#37BCBA] hover:bg-[#1a9997] font-medium rounded-md  my-[10%] text-center text-md text-white"
+      />
     </form>
   );
 }
