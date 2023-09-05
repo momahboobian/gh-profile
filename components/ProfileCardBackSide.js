@@ -24,11 +24,9 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
       const responseLastMonth = await fetch(
         `/api/gitHubAPI?owner=${profile.github}&since=${formattedDate}`
       );
+
       const commitsDataLastMonth = await responseLastMonth.json();
-      const totalCommitsLastMonth =
-        commitsDataLastMonth && commitsDataLastMonth.length > 0
-          ? commitsDataLastMonth[0].total_count
-          : 0;
+      const totalCommitsLastMonth = commitsDataLastMonth.totalCommitsLastMonth;
 
       setCommitsLastMonth(totalCommitsLastMonth);
     } catch (error) {
