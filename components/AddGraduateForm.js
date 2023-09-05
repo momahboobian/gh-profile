@@ -7,9 +7,6 @@ export default function AddGraduateForm() {
   const [linkedin, setLinkedin] = useState("");
   const [role, setRole] = useState("");
   const [cohort, setCohort] = useState("");
-  const [cv, setCV] = useState("");
-  const [cover, setCover] = useState("");
-  const [fp, setFp] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,8 +42,6 @@ export default function AddGraduateForm() {
         setCV("");
         setCohort("");
         setRole("");
-        setCover("");
-        setFp("");
       } else {
         console.error("Failed to send graduate data");
       }
@@ -108,33 +103,6 @@ export default function AddGraduateForm() {
         className="bg-[#606467]"
         value={cohort}
         onChange={(e) => setCohort(e.target.value)}
-      />
-
-      <label htmlFor="cvLink">CV Link:</label>
-      <input
-        type="text"
-        id="cvLink"
-        name="cvLink"
-        value={cv}
-        onChange={(e) => setCV(e.target.value)}
-      />
-
-      <label htmlFor="coverLetterLink">Cover Letter Link:</label>
-      <input
-        type="text"
-        id="coverLetterLink"
-        name="coverLetterLink"
-        value={cover}
-        onChange={(e) => setCover(e.target.value)}
-      />
-
-      <label htmlFor="githubFinalProject">GitHub Final Project:</label>
-      <input
-        type="text"
-        id="githubFinalProject"
-        name="githubFinalProject"
-        value={fp}
-        onChange={(e) => setFp(e.target.value)}
       />
 
       <input type="submit" value="Submit" />
