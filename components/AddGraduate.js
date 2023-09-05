@@ -16,7 +16,7 @@ export default function AddGraduate({ data }) {
     <>
       <button
         onClick={handleAddClick}
-        className=" flex flex-row items-center p-4  bg-[#37BCBA] hover:bg-[#1a9997] font-medium rounded-md w-[340px] md:w-[340px] my-[10%] text-left text-md text-white"
+        className="flex flex-row items-center p-4  bg-[#37BCBA] hover:bg-[#1a9997] font-medium rounded-md w-[340px] md:w-[340px] my-[10%] text-left text-md text-white"
       >
         <span className="inset-y-0 left-0 flex items-center pr-4 ">
           <FontAwesomeIcon

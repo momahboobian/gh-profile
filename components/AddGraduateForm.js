@@ -51,7 +51,7 @@ export default function AddGraduateForm({ data }) {
   return (
     <form
       id="graduateForm"
-      className="absolute rounded-xl align-middle top-[20%] left-[35%]   flex flex-col align-center  z-40 bg-white p-8 text-[#606467] w-[30%] "
+      className="absolute rounded-xl align-middle top-[23%] left-[35%]   flex flex-col align-center  z-40 bg-white p-8 text-[#606467] w-[30%] "
       onSubmit={handleSubmit}
     >
       <legend className="text-xl font-bold	 text-black">Add new Graduate</legend>
@@ -98,10 +98,12 @@ export default function AddGraduateForm({ data }) {
         type="text"
         id="cohort"
         name="cohort"
-        className="bg-[#606467]"
+        className="bg-[#606467] p-2 rounded-sm"
         value={cohort}
         onChange={(e) => setCohort(e.target.value)}
       />
+
+      <p className="font-thin text-sm italic ">*All fields are required</p>
 
       <input type="submit" value="Submit" />
     </form>
