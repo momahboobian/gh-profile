@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 export default function ProfileCardBackSide({ profile, isFlipped }) {
-  const [commits, setCommits] = useState(0);
+  const [commitsLastWeek, setCommitsLastWeek] = useState(0);
+  const [commitsLastMonth, setCommitsLastMonth] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -10,13 +11,26 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
 
     try {
       const response = await fetch(`/api/gitHubAPI?owner=${profile.github}`);
-      console.log(profile.github + " " + response.data);
-
       const commitsData = await response.json();
-      const totalCommits =
-        commitsData.length > 0 ? commitsData[0].total_count : 0;
+      const totalCommits = commitsData.totalCommitsLastWeek;
 
-      setCommits(commitsData);
+      setCommitsLastWeek(totalCommits);
+
+      // Fetch commits for last month
+      const oneMonthAgo = new Date();
+      oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+      const formattedDate = oneMonthAgo.toISOString().split("T")[0];
+
+      const responseLastMonth = await fetch(
+        `/api/gitHubAPI?owner=${profile.github}&since=${formattedDate}`
+      );
+      const commitsDataLastMonth = await responseLastMonth.json();
+      const totalCommitsLastMonth =
+        commitsDataLastMonth && commitsDataLastMonth.length > 0
+          ? commitsDataLastMonth[0].total_count
+          : 0;
+
+      setCommitsLastMonth(totalCommitsLastMonth);
     } catch (error) {
       setError("Error fetching commits");
     } finally {
@@ -33,24 +47,19 @@ export default function ProfileCardBackSide({ profile, isFlipped }) {
 
   return (
     <div className="profile-card-back-side text-white">
-      <div className="flex flex-col text-center text-lg">
-        {profile.fullName}
-      </div>
-      <div className="flex flex-col text-center text-lg">
+      <div className="text-center text-lg">{profile.fullName}</div>
+      <div className="text-center text-lg">
         <div>Progress of the user {profile.github}</div>
       </div>
-      <div className="flex flex-col text-center text-lg">
+      <div className="text-center text-lg">
         {isLoading ? (
           <div>Loading commits...</div>
         ) : error ? (
           <div>{error}</div>
         ) : (
           <>
-            <div>
-              Commits for last week:{" "}
-              {commits.length > 0 ? commits[0].total_count : 0}
-            </div>
-            <div>Average commits of last month</div>
+            <div>Commits for last week: {commitsLastWeek}</div>
+            <div>Commits for last month: {commitsLastMonth}</div>
           </>
         )}
       </div>
