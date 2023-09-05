@@ -17,15 +17,16 @@
     "@octokit/rest": "^20.0.1",
     "@vercel/postgres": "^0.4.1",
     "dayjs": "^1.11.9",
-    "eslint": "8.45.0",
     "next": "^13.4.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.22.15",
+    "@babel/eslint-parser": "^7.22.15",
     "@prisma/client": "^5.2.0",
     "autoprefixer": "^10.4.14",
-    "babel-eslint": "^10.1.0",
+    "eslint": "^8.48.0",
     "eslint-config-next": "13.4.12",
     "next": "^13.4.7",
     "postcss": "8.4.27",
