@@ -1,7 +1,32 @@
 const dayjs = require("dayjs");
 const { Octokit } = require("@octokit/rest");
-const octokit = new Octokit({
+const { throttling } = require("@octokit/plugin-throttling");
+const { retry } = require("@octokit/plugin-retry");
+
+// Create a custom Octokit instance with throttling and retry plugins
+const MyOctokit = Octokit.plugin(throttling).plugin(retry);
+
+const octokit = new MyOctokit({
   auth: process.env.GITHUB_AUTH_TOKEN,
+  throttle: {
+    onRateLimit: (retryAfter, options) => {
+      octokit.log.warn(
+        `Request quota exhausted for request ${options.method} ${options.url}`
+      );
+
+      // Retry twice after hitting a rate limit error, then give up
+      if (options.request.retryCount <= 2) {
+        console.log(`Retrying after ${retryAfter} seconds!`);
+        return true;
+      }
+    },
+    onSecondaryRateLimit: (retryAfter, options, octokit) => {
+      // Does not retry, only logs a warning
+      octokit.log.warn(
+        `Secondary quota detected for request ${options.method} ${options.url}`
+      );
+    },
+  },
 });
 
 import { PrismaClient } from "@prisma/client";
