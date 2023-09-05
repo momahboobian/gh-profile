@@ -4,6 +4,7 @@ import ProfileCard from "@components/ProfileCard";
 import Loading from "@components/Loading";
 import Search from "@components/Search";
 import Logo from "@components/Logo";
+import { CommitProvider } from "@utils/CommitContext";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -36,30 +37,32 @@ export default function Home() {
   return loading ? (
     <Loading />
   ) : (
-    <div className="flex flex-col  justify-center items-center min-h-screen p-4">
-      <div className="flex flex-col sm:flex-row w-full justify-center items-center p-4">
-        <div className="shrink-0 sm:hidden">
-          <Logo />
+    <CommitProvider>
+      <div className="flex flex-col  justify-center items-center min-h-screen p-4">
+        <div className="flex flex-col sm:flex-row w-full justify-center items-center p-4">
+          <div className="shrink-0 sm:hidden">
+            <Logo />
+          </div>
+          <div className="flex-1 ">
+            <Search search={search} setSearch={setSearch} />
+          </div>
+          <div className="shrink-0 justify-center items-center hidden sm:block">
+            <Logo />
+          </div>
+          <div className="flex-1 ">{/* Add button */}</div>
         </div>
-        <div className="flex-1 ">
-          <Search search={search} setSearch={setSearch} />
-        </div>
-        <div className="shrink-0 justify-center items-center hidden sm:block">
-          <Logo />
-        </div>
-        <div className="flex-1 ">{/* Add button */}</div>
-      </div>
 
-      <div className="flex items-start justify-center "></div>
-      <div className="flex flex-wrap items-center justify-center sm:justify-between">
-        {searchResults.length > 0
-          ? searchResults.map((profile) => (
-              <ProfileCard key={profile.id} profile={profile} />
-            ))
-          : data.map((profile) => (
-              <ProfileCard key={profile.id} profile={profile} />
-            ))}
+        <div className="flex items-start justify-center "></div>
+        <div className="flex flex-wrap items-center justify-center sm:justify-between">
+          {searchResults.length > 0
+            ? searchResults.map((profile) => (
+                <ProfileCard key={profile.id} profile={profile} />
+              ))
+            : data.map((profile) => (
+                <ProfileCard key={profile.id} profile={profile} />
+              ))}
+        </div>
       </div>
-    </div>
+    </CommitProvider>
   );
 }
