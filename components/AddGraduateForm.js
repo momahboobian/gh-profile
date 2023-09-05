@@ -24,7 +24,7 @@ export default function AddGraduateForm() {
         demoFP: null,
       };
 
-      const response = await fetch("/api/graduate", {
+      const response = await fetch("/api/addMember", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
