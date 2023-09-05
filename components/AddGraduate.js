@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import AddGraduateForm from "./AddGraduateForm";
 
-export default function AddGraduate() {
+export default function AddGraduate({ data }) {
   const [addButtonClick, setAddButtonClick] = useState(false);
 
   const handleAddClick = () => {
@@ -26,7 +26,9 @@ export default function AddGraduate() {
         </span>
         <div className="flex items-left">Add Graduate</div>
       </button>
-      <div>{addButtonClick === true ? <AddGraduateForm /> : null}</div>
+      <div>
+        {addButtonClick === true ? <AddGraduateForm data={data} /> : null}
+      </div>
     </>
   );
 }

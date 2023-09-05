@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function AddGraduateForm() {
+export default function AddGraduateForm({ data }) {
   const [fullName, setFullName] = useState("");
   const [gitHubUsername, setGitHubUsername] = useState("");
   const [linkedin, setLinkedin] = useState("");
@@ -12,16 +12,13 @@ export default function AddGraduateForm() {
     e.preventDefault();
     try {
       const newGraduate = {
-        fullName: "lala",
-        github: "nataliiazab",
-        avatar: "https://avatars.githubusercontent.com/u/113237479?v=4",
-        linkedin: "https://www.linkedin.com/in/nataliia-zablotska/",
-        role: "Full-Stack",
-        cohort: "LDN-9",
-        CV: null,
-        coverLetter: null,
-        gitFP: null,
-        demoFP: null,
+        fullName: fullName,
+        github: gitHubUsername,
+        avatar:
+          "https://raw.githubusercontent.com/1l0/identicon/master/example/identicons/default.png",
+        linkedin: linkedin,
+        role: role,
+        cohort: cohort,
       };
 
       const response = await fetch("/api/addMember", {
@@ -32,6 +29,7 @@ export default function AddGraduateForm() {
         body: JSON.stringify(newGraduate),
       });
       const data = await response.json();
+      console.log("add member", data);
       data.push(newGraduate);
       if (response.ok) {
         console.log("Graduate data sent successfully", data);
