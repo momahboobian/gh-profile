@@ -2,11 +2,27 @@
 import { useState } from "react";
 
 export default function AddGraduateForm({ data }) {
-  const [fullName, setFullName] = useState("");
-  const [gitHubUsername, setGitHubUsername] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [role, setRole] = useState("");
-  const [cohort, setCohort] = useState("your cohort");
+  const [fullName, setFullName] = useState("Your Full Name");
+  const [gitHubUsername, setGitHubUsername] = useState("Your Github Username");
+  const [linkedin, setLinkedin] = useState("Your LinkedIn");
+  const [role, setRole] = useState("Your Role");
+  const [cohort, setCohort] = useState("Your Cohort");
+
+  const handleClickCohort = () => {
+    setCohort("");
+  };
+  const handleClickFullName = () => {
+    setFullName("");
+  };
+  const handleClickGitHubUsername = () => {
+    setGitHubUsername("");
+  };
+  const handleClickLinkedin = () => {
+    setLinkedin("");
+  };
+  const handleClickRole = () => {
+    setRole("");
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -65,6 +81,7 @@ export default function AddGraduateForm({ data }) {
         value={fullName}
         className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         onChange={(e) => setFullName(e.target.value)}
+        onClick={handleClickFullName}
       />
 
       <label htmlFor="githubUsername">GitHub Username:</label>
@@ -75,6 +92,7 @@ export default function AddGraduateForm({ data }) {
         value={gitHubUsername}
         className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         onChange={(e) => setGitHubUsername(e.target.value)}
+        onClick={handleClickGitHubUsername}
       />
 
       <label htmlFor="linkedin">LinkedIn:</label>
@@ -85,6 +103,7 @@ export default function AddGraduateForm({ data }) {
         className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         value={linkedin}
         onChange={(e) => setLinkedin(e.target.value)}
+        onClick={handleClickLinkedin}
       />
       <div className=" flex  justify-around ">
         <div>
@@ -96,6 +115,7 @@ export default function AddGraduateForm({ data }) {
             className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7 w-[90%] shrink"
             value={role}
             onChange={(e) => setRole(e.target.value)}
+            onClick={handleClickRole}
           />
         </div>
 
@@ -108,6 +128,7 @@ export default function AddGraduateForm({ data }) {
             className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7 w-[90%] shrink "
             value={cohort}
             onChange={(e) => setCohort(e.target.value)}
+            onClick={handleClickCohort}
           />
         </div>
       </div>
@@ -117,7 +138,7 @@ export default function AddGraduateForm({ data }) {
       <input
         type="submit"
         value="Submit"
-        className=" p-4  bg-[#37BCBA] hover:bg-[#1a9997] font-medium rounded-md  my-[10%] text-center text-md text-white"
+        className=" p-4 cursor-pointer bg-[#37BCBA] hover:bg-[#1a9997] font-medium rounded-md  my-[10%] text-center text-md text-white"
       />
     </form>
   );
