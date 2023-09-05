@@ -6,7 +6,7 @@ export default function AddGraduateForm({ data }) {
   const [gitHubUsername, setGitHubUsername] = useState("");
   const [linkedin, setLinkedin] = useState("");
   const [role, setRole] = useState("");
-  const [cohort, setCohort] = useState("");
+  const [cohort, setCohort] = useState("your cohort");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -63,6 +63,7 @@ export default function AddGraduateForm({ data }) {
         id="fullName"
         name="fullName"
         value={fullName}
+        className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         onChange={(e) => setFullName(e.target.value)}
       />
 
@@ -72,6 +73,7 @@ export default function AddGraduateForm({ data }) {
         id="githubUsername"
         name="githubUsername"
         value={gitHubUsername}
+        className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         onChange={(e) => setGitHubUsername(e.target.value)}
       />
 
@@ -80,28 +82,35 @@ export default function AddGraduateForm({ data }) {
         type="text"
         id="linkedin"
         name="linkedin"
+        className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7"
         value={linkedin}
         onChange={(e) => setLinkedin(e.target.value)}
       />
+      <div className=" flex  justify-around ">
+        <div>
+          <label htmlFor="role">Role:</label>
+          <input
+            type="text"
+            id="role"
+            name="role"
+            className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7 w-[90%] shrink"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+          />
+        </div>
 
-      <label htmlFor="role">Role:</label>
-      <input
-        type="text"
-        id="role"
-        name="role"
-        value={role}
-        onChange={(e) => setRole(e.target.value)}
-      />
-
-      <label htmlFor="cohort">Cohort:</label>
-      <input
-        type="text"
-        id="cohort"
-        name="cohort"
-        className="bg-[#606467] p-2 rounded-sm"
-        value={cohort}
-        onChange={(e) => setCohort(e.target.value)}
-      />
+        <div>
+          <label htmlFor="cohort">Cohort:</label>
+          <input
+            type="text"
+            id="cohort"
+            name="cohort"
+            className="bg-[#f8f8f8]  border-2  border-solid	 p-2 rounded-md mb-7 w-[90%] shrink "
+            value={cohort}
+            onChange={(e) => setCohort(e.target.value)}
+          />
+        </div>
+      </div>
 
       <p className="font-thin text-sm italic ">*All fields are required</p>
 
