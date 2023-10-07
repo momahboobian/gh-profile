@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-export default function AddGraduateForm({ data }) {
+export default function AddGraduateForm({ data, setData }) {
   const [fullName, setFullName] = useState("Graduate Name");
   const [gitHubUsername, setGitHubUsername] = useState(
     "Graduate Github Username"
@@ -58,8 +58,9 @@ export default function AddGraduateForm({ data }) {
           },
           body: JSON.stringify(newGraduate),
         });
-        const data = await response.json();
-        console.log("add member", data);
+        const dataTrainee = await response.json();
+        console.log("add member", dataTrainee);
+        setData([...data, newGraduate]);
         data.push(newGraduate);
         if (response.ok) {
           console.log("Graduate data sent successfully", data);
