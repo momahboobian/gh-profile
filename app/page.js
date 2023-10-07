@@ -51,7 +51,7 @@ export default function Home() {
             <Logo />
           </div>
           <div>
-            <AddGraduate data={data} />
+            <AddGraduate data={data} setData={setData} />
           </div>
         </div>
 
