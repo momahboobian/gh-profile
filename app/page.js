@@ -8,6 +8,7 @@ import { CommitProvider } from "@utils/CommitContext";
 import AddGraduate from "@components/AddGraduate";
 
 export default function Home() {
+  
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("search");
@@ -39,15 +40,15 @@ export default function Home() {
     <Loading />
   ) : (
     <CommitProvider>
-      <div className="flex flex-col  flex-wrap  min-h-screen p-4">
-        <div className="flex flex-col sm:flex-row w-full justify-between items-center p-4">
+      <div className="flex flex-col flex-wrap min-h-screen p-4">
+        <div className="flex flex-col items-center justify-between w-full p-4 sm:flex-row">
           <div className="shrink-0 sm:hidden">
             <Logo />
           </div>
           <div>
             <Search search={search} setSearch={setSearch} />
           </div>
-          <div className="shrink-0 justify-center items-center hidden sm:block">
+          <div className="items-center justify-center hidden shrink-0 sm:block">
             <Logo />
           </div>
           <div>
