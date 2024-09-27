@@ -9,7 +9,6 @@ datasource db {
   url               = env("POSTGRES_PRISMA_URL")
   directUrl         = env("POSTGRES_URL_NON_POOLING")
   shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
-  schemas           = ["ghprofile"]
 }
 
 model Graduate {
@@ -21,5 +20,4 @@ model Graduate {
   role     String?
   cohort   String?
 
-  @@schema("ghprofile")
 }
